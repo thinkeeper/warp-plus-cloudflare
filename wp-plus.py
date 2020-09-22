@@ -10,7 +10,7 @@ from Config import Config
 import readable_time
 
 # ================Variables========================
-referrer = Config.LICENSE_KEY
+referrer = Config.CLIENT_ID
 token = Config.BOT_TOKEN
 LOG_CHAT_ID = Config.LOG_CHAT_ID
 # =================================================

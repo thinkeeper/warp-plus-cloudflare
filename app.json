@@ -15,7 +15,7 @@
         "description": "Put here channel id -  (not usernames).",
         "value": ""
       },
-      "LICENSE_KEY": {
+      "CLIENT_ID": {
         "description": "put warp license."
       }
     },
