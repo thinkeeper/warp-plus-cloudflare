@@ -1,1 +1,1 @@
-telepot
+urllib3

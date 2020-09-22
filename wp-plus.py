@@ -6,21 +6,35 @@ import string
 import time
 import os
 import sys
-import asyncio
-import telepot
 from Config import Config
 import readable_time
 
-bot = telepot.Bot(Config.BOT_TOKEN)
-StartTime = time.time()
-bot.sendMessage(Config.LOG_CHAT_ID,
-                'WARP+ Logging start.') 	
-
-os.system("title WARP-PLUS-CLOUDFLARE")
-os.system('cls' if os.name == 'nt' else 'clear')
-
+# ================Variables========================
 referrer = Config.LICENSE_KEY
+token = Config.BOT_TOKEN
+LOG_CHAT_ID = Config.LOG_CHAT_ID
+# =================================================
 
+os.system("title WARP-PLUS-CLOUDFLARE By ALIILAPRO")
+os.system('cls' if os.name == 'nt' else 'clear')
+print('      _______ _      __________________       _______ _______ _______ _______\n'
+'     (  ___  | \     \__   __|__   __( \     (  ___  |  ____ |  ____ |  ___  )\n'
+'     | (   ) | (        ) (     ) (  | (     | (   ) | (    )| (    )| (   ) |\n'
+'     | (___) | |        | |     | |  | |     | (___) | (____)| (____)| |   | |\n'
+'     |  ___  | |        | |     | |  | |     |  ___  |  _____)     __) |   | |\n'
+'     | (   ) | |        | |     | |  | |     | (   ) | (     | (\ (  | |   | |\n'
+'     | )   ( | (____/\__) (_____) (__| (____/\ )   ( | )     | ) \ \_| (___) |\n'
+'     |/     \(_______|_______|_______(_______//     \|/      |/   \__(_______)\n')
+print ("[+] ABOUT SCRIPT:")
+print ("[-] With this script, you can getting unlimited GB on Warp+.")
+print ("[-] Version: 4.0.0")
+print ("--------")
+print ("[+] THIS SCRIPT CODDED BY ALIILAPRO") 
+print ("[-] SITE: aliilapro.github.io") 
+print ("[-] TELEGRAM: aliilapro")
+print ("--------")
+
+StartTime = time.time()
 def genString(stringLength):
 	try:
 		letters = string.ascii_letters + string.digits
@@ -57,8 +71,7 @@ def run():
 		status_code = response.getcode()	
 		return status_code
 	except Exception as error:
-		bot.sendMessage(Config.LOG_CHAT_ID,
-                         f"[Error]\n\n{error}")	
+		print(error)	
 
 g = 0
 b = 0
@@ -67,6 +80,9 @@ while True:
 	if result == 200:
 		g = g + 1
 		os.system('cls' if os.name == 'nt' else 'clear')
+		print("")
+		print("                  WARP-PLUS-CLOUDFLARE (script)" + " By ALIILAPRO")
+		print("")
 		animation = ["[■□□□□□□□□□] 10%","[■■□□□□□□□□] 20%", "[■■■□□□□□□□] 30%", "[■■■■□□□□□□] 40%", "[■■■■■□□□□□] 50%", "[■■■■■■□□□□] 60%", "[■■■■■■■□□□] 70%", "[■■■■■■■■□□] 80%", "[■■■■■■■■■□] 90%", "[■■■■■■■■■■] 100%"] 
 		for i in range(len(animation)):
 			time.sleep(0.5)
@@ -76,22 +92,20 @@ while True:
 		print(f"[:)] {g} GB has been successfully added to your account.")
 		print(f"[#] Total: {g} Good {b} Bad")
 		print("[*] After 18 seconds, a new request will be sent.")
-		
-  
-		# bot-logger
 		uptime = readable_time.get_readable_time((time.time() - StartTime))
-		bot.sendMessage(Config.LOG_CHAT_ID,
-                       	 f"\n{g} GB has been successfully added to your account."
-                         f"\nTotal: {g} Good {b} Bad"
-                         "\nAfter 18 seconds, a new request will be sent."
-                         f"\nBot uptime: {uptime}."
-                         "\nRunning by: @spookyanii")
+		uro = f'https://api.telegram.org/bot{token}/sendMessage'
+		values = {'chat_id': LOG_CHAT_ID,'text': f"\n{g} GB has been successfully added to your account." + f"\nTotal: {g} Good {b} Bad" + f"\nBot uptime: {uptime}" + "\nAfter 18 seconds, a new request will be sent."}
+		dat = urllib.parse.urlencode(values)
+		dat = dat.encode('ascii')
+		rek = urllib.request.Request(uro, dat)
+		urllib.request.urlopen(rek)
 		time.sleep(18)
 	else:
 		b = b + 1
 		os.system('cls' if os.name == 'nt' else 'clear')
+		print("")
+		print("                  WARP-PLUS-CLOUDFLARE (script)" + " By ALIILAPRO")
+		print("")
 		print("[:(] Error when connecting to server.")
-		print(f"[#] Total: {g} Good {b} Bad")	
-		bot.sendMessage(Config.LOG_CHAT_ID,
-                  "\nError when connecting to server."
-                  f"\nTotal: {g} Good {b} Bad")
+		print(f"[#] Total: {g} Good {b} Bad")
+		urllib.request.urlopen(f"https://api.telegram.org/bot{token}/editMessageText?chat_id={LOG_CHAT_ID}&message_id=16&text=Bad")
